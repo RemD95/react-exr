@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import HelloWorld from './HelloWorld'
+import Counter from './counter'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -36,9 +37,54 @@ function App() {
 function App() {
   return (
     <div>
-    <HelloWorld/>
+      <HelloWorld />
     </div>
   )
 }
 
-export default App
+function Counter() {
+  return (
+    <div>
+      count: 0 
+    </div>
+  )
+}
+
+
+const AppSubmit = () => {
+  const [form, setForm] = useState({
+    email: "",
+    password: ""
+  })
+
+  const clearForm = () => {
+    setForm({
+      email: "",
+      password: ""
+    })
+  }
+
+  return (
+    <>
+    <form>
+      <div>
+        <label htmlFor="email">Email</label>
+        <input type="email" onInput={handleInput} value={form.email} id="email" name="email" placeholder="inserisci email" />
+      </div>
+      <div>
+        <label htmlFor="password">Password</label>
+        <input type="password" onInput={handleInput} value={form.password} id="password" name="password" placeholder="inserisci password" />
+      </div>
+      <div>
+        <button type="submit">Registrati</button>
+      </div>
+    </form>
+    <div>
+      
+    </div>
+    </>
+  )
+}
+
+
+export default Counter

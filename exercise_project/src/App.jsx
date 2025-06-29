@@ -42,14 +42,6 @@ function App() {
   )
 }
 
-function Counter() {
-  return (
-    <div>
-      count: 0 
-    </div>
-  )
-}
-
 
 const AppSubmit = () => {
   const [form, setForm] = useState({
@@ -86,5 +78,4 @@ const AppSubmit = () => {
   )
 }
 
-
-export default Counter
+export default AppSubmit

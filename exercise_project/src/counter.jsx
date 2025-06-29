@@ -11,6 +11,10 @@ const Counter = () => {
         setCount(count - 1);
     };
 
+    const handleReset = () => {
+        setCount(0);
+    };
+
     return (
         <div>
             <p>
@@ -18,6 +22,7 @@ const Counter = () => {
             </p>
             <button onClick={handleIncrement}>Incremento</button>
             <button onClick={handleDecrement}>Decrementa</button>
+            <button onClick={handleReset}>Reset</button>
         </div>
     );
 }

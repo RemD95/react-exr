@@ -3,6 +3,11 @@ import React, { useState } from "react";
 const Counter = () => {
     const [count, setCount] = useState(0);
 
+    useEffect(() => {
+        document.title = `Contatore: ${count}`;
+    },
+        [count]);
+
     const handleIncrement = () => {
         setCount(count + 1);
     };

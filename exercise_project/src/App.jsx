@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import ToDoList from './ToDoList'
+import UncontrolledInput from './components/UncontrolledInput'
 
 
 function App() {
@@ -13,6 +14,12 @@ function App() {
     <div>
       <ToDoList/>
     </div>
+  )
+
+  return(
+    <>
+    <UncontrolledInput/>
+    </>
   )
 }
 

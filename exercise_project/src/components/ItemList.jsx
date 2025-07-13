@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItemList = (item) => {
+const ItemList = ({item}) => {
     return (
         <>
             <div>

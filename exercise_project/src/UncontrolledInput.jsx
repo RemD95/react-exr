@@ -1,20 +1,13 @@
-import { useRef } from "react";
+import React,{ useRef } from "react";
 
 const UncontrolledInput = ()=>{
- const inputRef = useRef();
- const handleButton = ()=> {
-  if(inputRef.current){
-    const inputValue = inputRef.current.value;
-    alert('Hai digitato : ${inputValue}')
-  }
- }
-   return(
-        <>
-        <input type="text"  ref={inputRef}/>
-
-        <button onClick={handleButton}>Accetta</button>
-        </>
-    )
+ const inputRef = useRef(null);
+return (
+  <>
+  <h2>Uncontrolled Input Ex.2</h2>
+  <input type="text"  ref={inputRef} />
+  </>
+)
 }
 
 export default UncontrolledInput

@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import ToDoList from './ToDoList'
-import UncontrolledInput from './components/UncontrolledInput'
-
+import Card from './components/Card'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,13 +15,19 @@ function App() {
     </div>
   )
 
-  return(
-    <>
-    <UncontrolledInput/>
-    </>
-  )
 }
 
+function Card(props) {
+  return (
+    <div>
+      <Card>
+        <h2>Titolo della Card</h2>
+        <p>Paragrafo di esempio della Card </p>
+      </Card>
+    </div>
+  )
+
+}
 
 
   

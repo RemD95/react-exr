@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import ItemList from './components/ItemList'
 import Card from './components/Card'
+import ToDoList from './components/ToDoList'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,8 @@ function App() {
         <h2>Titolo 2</h2>
         <p>Paragrafo della card</p>
       </Card>
+
+      <ToDoList/>
     </div>
   )
   

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function useFilteredTodos(todos, searchTerm) {
-    const [filteredTodos, setFilteredTodos] = useState();
+    const [filteredTodos, setFilteredTodos] = useState([]);
 
     useEffect(() => {
         const lowercasedSearchTerm = searchTerm.toLowerCase();

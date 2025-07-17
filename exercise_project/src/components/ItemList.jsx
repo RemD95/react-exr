@@ -1,12 +1,13 @@
 import React from 'react';
 
-const ItemList = ({item}) => {
+const ItemList = ({items}) => {
     return (
         <>
             <div>
                 <h2>Items List</h2>
                 <ul>
-                    {item.map((item, index) => (<li key={index}>
+                    {items.map((item, index) => (
+                        <li key={index}>
                         {item}
                     </li>
                     ))}
@@ -16,3 +17,5 @@ const ItemList = ({item}) => {
     )
 
 }
+
+export default ItemList

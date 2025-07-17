@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import ToDoList from './ToDoList'
+import ItemList from './components/ItemList'
 import Card from './components/Card'
 
 function App() {
@@ -11,23 +11,25 @@ function App() {
 
   return(
     <div>
-      <ToDoList/>
-    </div>
-  )
-
-}
-
-function Card(props) {
-  return (
-    <div>
+      <ItemList items={myItems} />
       <Card>
         <h2>Titolo della Card</h2>
-        <p>Paragrafo di esempio della Card </p>
+        <p>Paragrafo della card</p>
+      </Card>
+
+      <Card>
+        <h2>Titolo 2</h2>
+        <p>Paragrafo della card</p>
       </Card>
     </div>
   )
-
+  
 }
+
+ 
+
+
+
 
 
   

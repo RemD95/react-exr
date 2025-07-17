@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const useFetch = (url)=> {
+const useFetch = (URL)=> {
 
     const [data, setData]= useState(null);
     const [loading, setLoading]= useState(true);
@@ -8,8 +8,9 @@ const useFetch = (url)=> {
     
     useEffect(()=>{
         async function fetchData() {
+            setError(null)
             try {
-                const response = await fetch(url)
+                const response = await fetch(URL)
                 if (!response.ok){
                     throw new Error('Internal Error');                    
                 }
@@ -18,8 +19,9 @@ const useFetch = (url)=> {
                 setLoading(false)
             } catch (error) {
                 setError(error.message);
-                setLoading(false);
                 console.error(error);
+            }finally{
+                setLoading(false);
             }
         }
 
@@ -27,19 +29,10 @@ const useFetch = (url)=> {
 
     },[]);
 
-    if (loading) return(
-        <><p>Loading...</p></>
-    )
-    if (error) return (
-        <><p>{error}</p></>
-    )
+   return [data, loading, error]
     
 }
 
-return (
-    <>
-    
-    </>
-)
+
 
 export default useFetch

@@ -3,13 +3,14 @@ import useFetch from "../hooks/useFetch";
 import useFilteredTodos from "../hooks/useFilteredTodos.js";
 import { useCallback } from "react";
 import { useMemo } from "react";
+import { useRef, useEffect } from "react";
 
 
 const ToDoList = () => {
     const [text, setText] = useState("");
     const [searchTerm, setSearchTerm] = usestate("");
-
     const [data, loading, error] = useFetch('https://jsonplaceholder.typicode.com/todos');
+    const inputRef = useRef(null);
     const filteredTodos = useMemo((data, searchTerm) => {
         if (!data) {
             return [];
@@ -18,19 +19,26 @@ const ToDoList = () => {
             todo.title.toLowerCase().includes(searchTerm.toLowerCase())
         )
     }, [data, searchTerm]);
+    
     const handleSearchChange = useCallback((event) => {
         setSearchTerm(event.target.value)
     }, []);
     if (loading) {
-         return <div>Loading...</div> };
-    if (error) { 
-        return <div>Errore di caricamento:{error}</div> };
-
+        return <div>Loading...</div>
+    };
+    if (error) {
+        return <div>Errore di caricamento:{error}</div>
+    };
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.focus()
+        }
+    }, []);
 
     return (
         <>
             <h2>To Do List</h2>
-            <input type="text" onChange={handleSearchChange} />
+            <input ref={inputRef} type="text" onChange={handleSearchChange} />
             <ul>
                 {filteredTodos.map(todo => (
                     <li key={todo.id}>

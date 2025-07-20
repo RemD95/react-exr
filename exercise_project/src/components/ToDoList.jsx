@@ -1,11 +1,8 @@
 import { useState } from "react";
-import useFetch from "../hooks/useFetch";
-import useFilteredTodos from "../hooks/useFilteredTodos.js";
 import { useCallback } from "react";
 import { useMemo } from "react";
 import { useRef, useEffect } from "react";
-import { useEffect } from "react";
-import { useTodos } from "../ToDoContext.js";
+import { useTodos } from "../ToDoContext.jsx";
 
 
 const ToDoList = () => {

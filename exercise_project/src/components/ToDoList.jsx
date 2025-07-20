@@ -4,12 +4,14 @@ import useFilteredTodos from "../hooks/useFilteredTodos.js";
 import { useCallback } from "react";
 import { useMemo } from "react";
 import { useRef, useEffect } from "react";
+import { useEffect } from "react";
+import { useTodos } from "../ToDoContext.js";
 
 
 const ToDoList = () => {
     const [text, setText] = useState("");
     const [searchTerm, setSearchTerm] = usestate("");
-    const [data, loading, error] = useFetch('https://jsonplaceholder.typicode.com/todos');
+    const {data, loading, error} = useTodos();
     const inputRef = useRef(null);
     const filteredTodos = useMemo((data, searchTerm) => {
         if (!data) {
@@ -29,6 +31,7 @@ const ToDoList = () => {
     if (error) {
         return <div>Errore di caricamento:{error}</div>
     };
+    
     useEffect(() => {
         if (inputRef.current) {
             inputRef.current.focus()

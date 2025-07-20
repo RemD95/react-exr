@@ -2,15 +2,15 @@ import { useState } from "react";
 import { useCallback } from "react";
 import { useMemo } from "react";
 import { useRef, useEffect } from "react";
-import { useTodos } from "../ToDoContext.jsx";
+import { useTodos } from "./ToDoContext.jsx";
 
 
 const ToDoList = () => {
     const [text, setText] = useState("");
-    const [searchTerm, setSearchTerm] = usestate("");
-    const {data, loading, error} = useTodos();
+    const [searchTerm, setSearchTerm] = useState("");
+    const { data, loading, error } = useTodos();
     const inputRef = useRef(null);
-    const filteredTodos = useMemo((data, searchTerm) => {
+    const filteredTodos = useMemo(() => {
         if (!data) {
             return [];
         }
@@ -18,22 +18,25 @@ const ToDoList = () => {
             todo.title.toLowerCase().includes(searchTerm.toLowerCase())
         )
     }, [data, searchTerm]);
-    
+
     const handleSearchChange = useCallback((event) => {
-        setSearchTerm(event.target.value)
+        setSearchTerm(event.target.value);
     }, []);
-    if (loading) {
-        return <div>Loading...</div>
-    };
-    if (error) {
-        return <div>Errore di caricamento:{error}</div>
-    };
-    
+
     useEffect(() => {
         if (inputRef.current) {
             inputRef.current.focus()
         }
     }, []);
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+    if (error) {
+        return <div>Errore di caricamento:{error}</div>
+    };
+
+
 
     return (
         <>
@@ -51,4 +54,4 @@ const ToDoList = () => {
     )
 };
 
-export default ToDoList;
+export default ToDoList

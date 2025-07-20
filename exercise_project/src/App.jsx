@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import './App.css'
-import ItemList from './components/ItemList'
-import Card from './components/Card'
-import ToDoList from './components/ToDoList'
-import { ToDoProvider } from './ToDoContext'
-import { Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
-import Navbar from './components/NavBar'
+import ItemList from './components/ItemList.jsx'
+import Card from './components/Card.jsx'
+import ToDoList from './ToDoList.jsx'
+import ToDoProvider from './ToDoContext.jsx'
+import { Routes, Route } from 'react-router-dom'
+import Home from './Home.jsx'
+import About from './About.jsx'
+import Navbar from './components/NavBar.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState("")
 
 
   const myItems = ['pane', 'latte', 'uova', 'verdure']
@@ -18,7 +18,9 @@ function App() {
   return (
     <div>
       <Navbar />
+      
       <ItemList items={myItems} />
+      
       <Card>
         <h2>Titolo della Card</h2>
         <p>Paragrafo della card</p>
@@ -29,20 +31,12 @@ function App() {
         <p>Paragrafo della card</p>
       </Card>
 
-      <Home>
-        <ToDoProvider>
-          <ToDoList />
-        </ToDoProvider>
-      </Home>
-     
-      <About>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, amet.</p>
-      </About>
-
+    <ToDoProvider>
       <Routes>
-        <Route path="/" elemnt={<Home />} />
-        <Route path="/" elemnt={<About />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
       </Routes>
+      </ToDoProvider>
     </div>
   )
 

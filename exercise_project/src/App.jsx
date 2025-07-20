@@ -2,12 +2,11 @@ import { useState } from 'react'
 import './App.css'
 import ItemList from './components/ItemList.jsx'
 import Card from './components/Card.jsx'
-import ToDoList from './ToDoList.jsx'
 import ToDoProvider from './ToDoContext.jsx'
 import { Routes, Route } from 'react-router-dom'
 import Home from './Home.jsx'
 import About from './About.jsx'
-import Navbar from './components/NavBar.jsx'
+import Layout from './components/Layout.jsx'
 
 function App() {
   const [count, setCount] = useState("")
@@ -17,10 +16,8 @@ function App() {
 
   return (
     <div>
-      <Navbar />
-      
       <ItemList items={myItems} />
-      
+
       <Card>
         <h2>Titolo della Card</h2>
         <p>Paragrafo della card</p>
@@ -31,11 +28,13 @@ function App() {
         <p>Paragrafo della card</p>
       </Card>
 
-    <ToDoProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
+      <ToDoProvider>
+        <Routes>
+          <Route path='/' element={<Layout/>}>
+            <Route path="" element={<Home/>}/>
+            <Route path="about" element={<About/>}/>
+          </Route>
+        </Routes>
       </ToDoProvider>
     </div>
   )

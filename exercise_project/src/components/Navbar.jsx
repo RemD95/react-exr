@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({admin, setAdmin}) => {
+  
     return (
         <>
             <nav>
@@ -10,6 +11,7 @@ const Navbar = () => {
                 <div>
                     <Link to="/about">About</Link>
                 </div>
+
             </nav>
         </>
     )

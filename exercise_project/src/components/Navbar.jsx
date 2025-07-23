@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Navbar = ({admin, setAdmin}) => {
+const Navbar = () => {
   
     return (
         <>

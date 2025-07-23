@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { useMemo } from "react";
 import { useRef, useEffect } from "react";
 import { useTodos } from "./ToDoContext.jsx";
-
+import { Link } from "react-router-dom";
 
 const ToDoList = () => {
     const [text, setText] = useState("");
@@ -41,7 +41,7 @@ const ToDoList = () => {
     return (
         <>
             <h2>To Do List</h2>
-            <input ref={inputRef} type="text" onChange={handleSearchChange} />
+            <input ref={inputRef} type="text" onChange={handleSearchChange} placeholder="Cerca toDo" />
             <ul>
                 {filteredTodos.map(todo => (
                     <li key={todo.id}>

@@ -7,6 +7,8 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './Home.jsx'
 import About from './About.jsx'
 import Layout from './components/Layout.jsx'
+import ToDoDetails from './ToDoDetails.jsx'
+import ToDoList from './ToDoList.jsx'
 
 
 function App() {
@@ -22,16 +24,13 @@ function App() {
         <p>Paragrafo della card</p>
       </Card>
 
-      <Card>
-        <h2>Titolo 2</h2>
-        <p>Paragrafo della card</p>
-      </Card>
-
       <ToDoProvider>
         <Routes>
           <Route path='/' element={<Layout/>}>
             <Route path="" element={<Home />} />
             <Route path="about" element={<About />} />
+            <Route path="todos" element={<ToDoList />} />
+            <Route path="todos/:todoId" element={<ToDoDetails />} />
           </Route>
         </Routes>
       </ToDoProvider>

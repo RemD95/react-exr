@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "./NavBar"
 
-const Layout = ({admin, setAdmin}) => {
+const Layout = () => {
     return(
         <>
-        <Navbar admin={admin} setAdmin={setAdmin}/>
+        <Navbar/>
         <Outlet/>
         </>
     )

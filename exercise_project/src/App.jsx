@@ -24,7 +24,7 @@ function App() {
         <p>Paragrafo della card</p>
       </Card>
 
-      <ToDoProvider>
+      <ToDoProvider >
         <Routes>
           <Route path='/' element={<Layout/>}>
             <Route path="" element={<Home />} />

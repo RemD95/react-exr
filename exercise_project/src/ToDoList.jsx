@@ -4,9 +4,9 @@ import { useMemo } from "react";
 import { useRef, useEffect } from "react";
 import { useTodos } from "./ToDoContext.jsx";
 import { Link } from "react-router-dom";
+import { } from '@reduxjs/toolkit'
 
 const ToDoList = () => {
-    const [text, setText] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const { data, loading, error } = useTodos();
     const inputRef = useRef(null);
@@ -41,15 +41,21 @@ const ToDoList = () => {
     return (
         <>
             <h2>To Do List</h2>
-            <input ref={inputRef} type="text" onChange={handleSearchChange} placeholder="Cerca toDo" />
+            <input
+                ref={inputRef}
+                type="text"
+                onChange={handleSearchChange}
+                placeholder="Cerca toDo"
+            />
             <ul>
                 {filteredTodos.map(todo => (
                     <li key={todo.id}>
-                        <h3>{todo.title}</h3>
+                        <Link to={'/todo/${todo.id}'}>
+                            <h3>{todo.title}</h3>
+                        </Link>
                     </li>
                 ))}
             </ul>
-            <p>{text}</p>
         </>
     )
 };

@@ -18,19 +18,29 @@ const todoSlice = createSlice({
     },
     reducers:{
         addTodo:(state, action)=>{
-
+            state.items.push({
+                id:state.next
+            })
         },
         removeTodo:(state, action)=>{
 
         },
+        toggleTodo:(state, action)=>{
+
+        },
         extrareducers: (builder)=>{
-            builder.addCase(fetchTodos.pending, state=> {
-                state.status='Loading'
+            builder
+            .addCase(fetchTodosThunk.pending, state=> {
+                state.status='Loading';
             })
-            builder.addCase(fetchTodos.fulfilled state=> {
-                state.items=
+            .addCase(fetchTodosThunk.fulfilled, (state,action)=> {
+                state.items='succeeded';
+                state.items=action.payload;
             })
-            builder.addCase(fetchTodos.rejected)
+            .addCase(fetchTodosThunk.rejected, (state, action)=>{
+                state.status='failed'
+                state.error=action.error.message??'Errore'
+            })
         }
     }
 })
